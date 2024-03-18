@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 //J'ai résussi
 //Yessssssssssssss
 //Sa marche réeleeeeement !!!
+//Nouveau teste
 namespace Nemo
 {
     /// <summary>
