@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 //Teste72.0
+//J'ai résussi
 namespace Nemo
 {
     /// <summary>
