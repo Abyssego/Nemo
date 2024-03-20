@@ -28,7 +28,6 @@ namespace Nemo
         {
             InitializeComponent();
             //modification 11h26 le 20/03/2024
-            // nouveau test
         }
     }
 }
