@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,10 +25,38 @@ namespace Nemo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ObservableCollection<Client> _clients;
+
         public MainWindow()
         {
             InitializeComponent();
-            //modification 11h26 le 20/03/2024
+            ChargerDonnees();
+        }
+
+        private void ChargerDonnees()
+        {
+            // Simuler le chargement des données des clients depuis la base de données
+            _clients = new ObservableCollection<Client>
+            {
+                new Client { Nom = "Doe", Prenom = "John", Email = "john.doe@example.com", Telephone = "123456789" },
+                new Client { Nom = "Smith", Prenom = "Jane", Email = "jane.smith@example.com", Telephone = "987654321" }
+            };
+
+            dataGridClients.ItemsSource = _clients;
+        }
+
+        private void AutoriserPret_Click(object sender, RoutedEventArgs e)
+        {
+            // Logique pour autoriser le prêt de matériel
+            if (dataGridClients.SelectedItem is Client selectedClient)
+            {
+                MessageBox.Show($"Prêt autorisé pour {selectedClient.Prenom} {selectedClient.Nom}");
+                // Ici, vous pouvez ajouter la logique pour effectuer l'action d'autorisation dans la base de données
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un client pour autoriser le prêt.");
+            }
         }
     }
 }

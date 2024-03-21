@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dataGridClients" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="350" Margin="10,10,0,0" VerticalAlignment="Top" Width="400">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Autoriser le Prêt" HorizontalAlignment="Left" Margin="429,86,0,0" VerticalAlignment="Top" Width="150" Click="AutoriserPret_Click"/>
     </Grid>
 </Window>
