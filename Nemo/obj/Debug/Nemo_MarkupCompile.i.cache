@@ -10,11 +10,19 @@ none
 false
 DEBUG;TRACE
 C:\Users\lyon\Source\Repos\Nemo\Nemo\App.xaml
+<<<<<<< Updated upstream
 1219584333
 
 10-1399756067
 13-1310406943
 MainWindow.xaml;
+=======
+2-649792496
 
-False
+15-1910126878
+33-539261738
+MainWindow.xaml;page\page1.xaml;
+>>>>>>> Stashed changes
+
+True
 

@@ -13,11 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-//Teste72.0
-//J'ai résussi
-//Yessssssssssssss
-//Sa marche réeleeeeement !!!
-//Nouveau teste
+
 namespace Nemo
 {
     /// <summary>
@@ -30,6 +26,7 @@ namespace Nemo
         public MainWindow()
         {
             InitializeComponent();
+<<<<<<< Updated upstream
             ChargerDonnees();
         }
 
@@ -57,6 +54,8 @@ namespace Nemo
             {
                 MessageBox.Show("Veuillez sélectionner un client pour autoriser le prêt.");
             }
+=======
+>>>>>>> Stashed changes
         }
     }
 }

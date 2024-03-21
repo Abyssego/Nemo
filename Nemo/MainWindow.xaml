@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Nemo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid>
+<<<<<<< Updated upstream
         <DataGrid x:Name="dataGridClients" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="350" Margin="10,10,0,0" VerticalAlignment="Top" Width="400">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
@@ -17,5 +19,12 @@
         </DataGrid>
 
         <Button Content="Autoriser le Prêt" HorizontalAlignment="Left" Margin="429,86,0,0" VerticalAlignment="Top" Width="150" Click="AutoriserPret_Click"/>
+=======
+        <StackPanel Orientation="Horizontal" Background="LightGray" Margin="0,0,0,388">
+            <Button Content="Page 1" Click="Page1Button_Click" Margin="5" Width="160"/>
+        </StackPanel>
+
+        <Frame x:Name="mainFrame" Grid.Row="1"/>
+>>>>>>> Stashed changes
     </Grid>
 </Window>
