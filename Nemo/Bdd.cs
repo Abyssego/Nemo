@@ -385,62 +385,11 @@ namespace Nemo
 
 
 
-
-
-
-
-
-        //Méthode pour insérer un nouvel enregistrement à la table NiveauPlonger
-        public static void InsertParticipantPlonger(string datePlonger, int numParticipantPlonger, Plongeur lePlongeur, Plonger lePlonger, Personnel lePersonnel, string materielLouerParticipantPlonger, int presentParticipantPlonger)
-        {
-            //Requête Insertion RendezVous
-            string query = "INSERT INTO niveauplonger (nomRendezVous, prenomRendezVous) VALUES('" + nomNiveauPlonger + "','" + prenomNiveauPlonger + "')";
-            MessageBox.Show(Convert.ToString(query));
-            //open connection
-            if (Bdd.OpenConnection() == true)
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                //Execute command
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                Bdd.CloseConnection();
-            }
-        }
-
-
-        public static void UpdateParticipantPlonger(string datePlonger, int numParticipantPlonger, Plongeur lePlongeur, Plonger lePlonger, Personnel lePersonnel, string materielLouerParticipantPlonger, int presentParticipantPlonger)
-        {
-            //Update RendezVous
-            string query = "UPDATE rendezvous SET IdSitePlonger='" + numSitePlonger + "', DescriptionNiveauPlonger='" + nomSitePlonger + "', ProfondeurMaxSitePlonger='" + profondeurMaxSitePlonger + "' WHERE IdSitePlonger=" + numSitePlonger;
-            Console.WriteLine(query);
-            MessageBox.Show(Convert.ToString(query));
-            //Open connection
-            if (Bdd.OpenConnection() == true)
-            {
-                //create mysql command
-                MySqlCommand cmd = new MySqlCommand();
-                //Assign the query using CommandText
-                cmd.CommandText = query;
-                //Assign the connection using Connection
-                cmd.Connection = connection;
-
-                //Execute query
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                Bdd.CloseConnection();
-            }
-        }
-
-
         //Méthode pour supprimer un élément au numéro donnée de la table RendezVous
-        public static void DeleteParticipantPlonger(int numSitePlonger)
+        public static void DeletePersonnel(int numPersonnel)
         {
             //Delete Contrat
-            string query = "DELETE FROM siteplonger WHERE IdSitePlonger=" + numSitePlonger;
+            string query = "DELETE FROM Personnel WHERE IdPersonnelr=" + numPersonnel;
 
             if (Bdd.OpenConnection() == true)
             {
@@ -452,13 +401,13 @@ namespace Nemo
 
 
         //Méthode pour afficher tous les enregistrements de la table RendezVous
-        public static List<ParticipantPlonger> SelectParticipantPlonger()
+        public static List<Personnel> SelectPersonnel()
         {
             //Select statement
-            string query = "SELECT * FROM siteplonger";
+            string query = "SELECT * FROM Personnel";
 
             //Create a list to store the result
-            List<SitePlonger> dbSitePlonger = new List<SitePlonger>();
+            List<Personnel> dbPersonnel = new List<Personnel>();
 
             //Ouverture connection
             if (Bdd.OpenConnection() == true)
@@ -471,8 +420,8 @@ namespace Nemo
                 //Lecture des données et stockage dans la collection
                 while (dataReader.Read())
                 {
-                    SitePlonger leSitePlonger = new SitePlonger(Convert.ToInt32(dataReader["IdNiveauPlonger"]), Convert.ToString(dataReader["NomSitePlonger"]), Convert.ToInt32(dataReader["ProfondeurMaxSitePlonger"]));
-                    dbSitePlonger.Add(leSitePlonger);
+                    Personnel lePersonnel = new Personnel(Convert.ToInt32(dataReader["IdPersonnel"]), Convert.ToString(dataReader["NomPersonnel"]), Convert.ToString(dataReader["PrenomPersonnel"]), Convert.ToString(dataReader["RolePersonnel"]), Convert.ToString(dataReader["DateEmbauchePersonnel"]), Convert.ToString(dataReader["statutPersonnel"]));
+                    dbPersonnel.Add(lePersonnel);
                 }
 
                 //fermeture du Data Reader
@@ -482,22 +431,22 @@ namespace Nemo
                 Bdd.CloseConnection();
 
                 //retour de la collection pour être affichée
-                return dbSitePlonger;
+                return dbPersonnel;
             }
             else
             {
-                return dbSitePlonger;
+                return dbPersonnel;
             }
         }
 
         //Méthode qui renvoie l'enregistrement concerné par rapport au numéro pour la table RendezVous
-        public static ParticipantPlonger SearchParticipantPlonger(int idParticipantPlonger)
+        public static Personnel SearchPersonnel(int idPersonnel)
         {
             //Select statement
-            string query = "SELECT * FROM siteplonger  WHERE IdSitePlonger = " + idParticipantPlonger;
+            string query = "SELECT * FROM personnel  WHERE IdPersonnel = " + idPersonnel;
 
             //Create a list to store the result
-            List<ParticipantPlonger> dbParticipantPlonger = new List<ParticipantPlonger>();
+            List<Personnel> dbPersonnel = new List<Personnel>();
 
             //Ouverture connection
             if (Bdd.OpenConnection() == true)
@@ -510,12 +459,8 @@ namespace Nemo
                 //Lecture des données et stockage dans la collection
                 while (dataReaderS.Read())
                 {
-                    SitePlonger leSitePlonger = new SitePlonger(Convert.ToInt32(dataReaderS["IdNiveauPlonger"]), Convert.ToString(dataReaderS["NomSitePlonger"]), Convert.ToInt32(dataReaderS["ProfondeurMaxSitePlonger"]));
-                    Plonger lePlonger = new Plonger(Convert.ToInt32(dataReaderS["IdPlonger"]), leSitePlonger, Convert.ToString(dataReaderS["DatePlonger"]), Convert.ToString(dataReaderS["DurerPlonger"]), Convert.ToString(dataReaderS["TypePlonger"]));
-                    Plongeur
-                    Personnel
-                    ParticipantPlonger leParticipantPlonger = new ParticipantPlonger(Convert.ToInt32(dataReaderS["IdParticipantPlonger"]), Convert.ToString(dataReaderS["NomSitePlonger"]), Convert.ToInt32(dataReaderS["ProfondeurMaxSitePlonger"]));
-                    dbParticipantPlonger.Add(leParticipantPlonger);
+                    Personnel lePersonnel = new Personnel(Convert.ToInt32(dataReaderS["IdPersonnel"]), Convert.ToString(dataReaderS["NomPersonnel"]), Convert.ToString(dataReaderS["PrenomPersonnel"]), Convert.ToString(dataReaderS["RolePersonnel"]), Convert.ToString(dataReaderS["DateEmbauchePersonnel"]), Convert.ToString(dataReaderS["statutPersonnel"]));
+                    dbPersonnel.Add(lePersonnel);
                 }
 
                 //fermeture du Data Reader
@@ -525,17 +470,16 @@ namespace Nemo
                 Bdd.CloseConnection();
 
                 //retour de la collection pour être affichée
-                return dbParticipantPlonger[0];
+                return dbPersonnel[0];
 
             }
             else
             {
                 //retour de la collection pour être affichée
-                return dbParticipantPlonger[0];
+                return dbPersonnel[0];
             }
 
         }
 
     }
-
 }
