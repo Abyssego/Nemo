@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-//Teste72.0
-//J'ai résussi
-//Yessssssssssssss
-//Sa marche réeleeeeement !!!
-//Nouveau teste
+
 namespace Nemo
 {
     /// <summary>
@@ -27,7 +23,11 @@ namespace Nemo
         public MainWindow()
         {
             InitializeComponent();
-            //modification 11h02 le 21/03/2024
+        }
+
+        private void btnModif_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
