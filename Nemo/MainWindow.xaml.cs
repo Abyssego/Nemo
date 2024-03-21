@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlX.XDevAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,22 +13,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-//Teste72.0
-//J'ai résussi
-//Yessssssssssssss
-//Sa marche réeleeeeement !!!
-//Nouveau teste
+
 namespace Nemo
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
+    ///       
+
+
     public partial class MainWindow : Window
     {
+        List<SitePlonger> lesSitePlonger = new List<SitePlonger>();
+        List<NiveauPlonger> lesNiveauPlonger = new List<NiveauPlonger>();
+        List<Plonger> lesPlonger = new List<Plonger>();
+        List<Plongeur> lesPlongeur = new List<Plongeur>();
+        List<ParticipantPlonger> lesParticipantPlonger = new List<ParticipantPlonger>();
+        List<Personnel> lesPersonnel = new List<Personnel>();
+
         public MainWindow()
         {
             InitializeComponent();
-            //modification 11h26 le 20/03/2024
+
+            //Initialiser la connexion avec la BDD
+            Bdd.Initialize();
+
+
         }
     }
 }

@@ -9,50 +9,69 @@ namespace Nemo
     public class ParticipantPlonger
     {
         private string _datePlonger;
-        private int _numPlongeur;
+        private int _numParticipantPlonger;
         private Plongeur _lePlongeur;
         private Plonger _lePlonger;
         private Personnel _lePersonnel;
-        private string _nomPlongeur;
-        private string _prenomPlongeur;
-        private NiveauPlonger _leNiveauPlongeur;
+        private string _materielLouerParticipantPlonger;
+        private int _presentParticipantPlonger;
 
-        public ParticipantPlonger(int numPlongeur, string nomPlongeur, string prenomPlongeur, NiveauPlonger leNiveauPlongeur)
+        public ParticipantPlonger(string datePlonger, int numParticipantPlonger, Plongeur lePlongeur, Plonger lePlonger, Personnel lePersonnel, string materielLouerParticipantPlonger, int presentParticipantPlonger)
         {
-            _numPlongeur = numPlongeur;
-            _nomPlongeur = nomPlongeur;
-            _prenomPlongeur = prenomPlongeur;
-            _leNiveauPlongeur = leNiveauPlongeur;
+            _datePlonger = datePlonger;
+            _numParticipantPlonger = numParticipantPlonger;
+            _lePlongeur = lePlongeur;
+            _lePlonger = lePlonger;
+            _lePersonnel = lePersonnel;
+            _materielLouerParticipantPlonger = materielLouerParticipantPlonger;
+            _presentParticipantPlonger= presentParticipantPlonger;
         }
 
-        public int NumPlongeur
+        public string DatePlonger
         {
-            get { return _numPlongeur; }
-            set { _numPlongeur = value; }
+            get { return _datePlonger; }
+            set { _datePlonger= value; }
         }
 
-        public string NomPlongeur
+        public int NumParticipantPlonger
         {
-            get { return _nomPlongeur; }
-            set { _nomPlongeur = value; }
+            get { return _numParticipantPlonger; }
+            set { _numParticipantPlonger = value; }
         }
 
-        public string PrenomPlongeur
+        public Plongeur LePlongeur
         {
-            get { return _prenomPlongeur; }
-            set { _prenomPlongeur = value; }
+            get { return _lePlongeur; }
+            set { _lePlongeur = value; }
         }
 
-        public NiveauPlonger LeNiveauPlongeur
+        public Plonger LePlonger
         {
-            get { return _leNiveauPlongeur; }
-            set { _leNiveauPlongeur = value; }
+            get { return _lePlonger; }
+            set { _lePlonger = value; }
         }
 
+        public Personnel LePersonnel
+        {
+            get { return _lePersonnel; }
+            set { _lePersonnel = value; }
+        }
+
+        public string MaterielLouerParticipantPlonger
+        {
+            get { return _materielLouerParticipantPlonger; }
+            set { _materielLouerParticipantPlonger = value; }
+        }
+
+        public int PresentParticipantPlonger
+        {
+            get { return _presentParticipantPlonger; }
+            set { _presentParticipantPlonger = value; }
+        }
 
         public override string ToString()
         {
-            return NumPlongeur.ToString();
+            return NumParticipantPlonger.ToString();
         }
     }
 }

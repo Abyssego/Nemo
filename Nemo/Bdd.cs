@@ -135,7 +135,7 @@ namespace Nemo
         public static void DeleteNiveauPlonger(int numNiveauPlonger)
         {
             //Delete Contrat
-            string query = "DELETE FROM NiveauPlonger WHERE numNiveauPlonger=" + numNiveauPlonger;
+            string query = "DELETE FROM niveauplonger WHERE IdNiveauPlonger=" + numNiveauPlonger;
 
             if (Bdd.OpenConnection() == true)
             {
@@ -230,7 +230,7 @@ namespace Nemo
 
 
         //Méthode pour insérer un nouvel enregistrement à la table NiveauPlonger
-        public static void InsertNiveauPlonger(string nomNiveauPlonger, string prenomNiveauPlonger)
+        public static void InsertSitePlonger(string nomNiveauPlonger, string prenomNiveauPlonger)
         {
             //Requête Insertion RendezVous
             string query = "INSERT INTO niveauplonger (nomRendezVous, prenomRendezVous) VALUES('" + nomNiveauPlonger + "','" + prenomNiveauPlonger + "')";
@@ -250,10 +250,10 @@ namespace Nemo
         }
 
 
-        public static void UpdateNiveauPlonger(int numNiveauPlonger, string descriptionNiveauPlonger)
+        public static void UpdateSitePlonger(int numSitePlonger, string nomSitePlonger, int profondeurMaxSitePlonger)
         {
             //Update RendezVous
-            string query = "UPDATE rendezvous SET IdNiveauPlonger='" + numNiveauPlonger + "', DescriptionNiveauPlonger='" + descriptionNiveauPlonger + "' WHERE IdNiveauPlonger=" + numNiveauPlonger;
+            string query = "UPDATE rendezvous SET IdSitePlonger='" + numSitePlonger + "', DescriptionNiveauPlonger='" + nomSitePlonger + "', ProfondeurMaxSitePlonger='" + profondeurMaxSitePlonger + "' WHERE IdSitePlonger=" + numSitePlonger;
             Console.WriteLine(query);
             MessageBox.Show(Convert.ToString(query));
             //Open connection
@@ -276,10 +276,10 @@ namespace Nemo
 
 
         //Méthode pour supprimer un élément au numéro donnée de la table RendezVous
-        public static void DeleteNiveauPlonger(int numNiveauPlonger)
+        public static void DeleteSitePlonger(int numSitePlonger)
         {
             //Delete Contrat
-            string query = "DELETE FROM NiveauPlonger WHERE numNiveauPlonger=" + numNiveauPlonger;
+            string query = "DELETE FROM siteplonger WHERE IdSitePlonger=" + numSitePlonger;
 
             if (Bdd.OpenConnection() == true)
             {
@@ -291,13 +291,13 @@ namespace Nemo
 
 
         //Méthode pour afficher tous les enregistrements de la table RendezVous
-        public static List<NiveauPlonger> SelectSitePlonger()
+        public static List<SitePlonger> SelectSitePlonger()
         {
             //Select statement
-            string query = "SELECT * FROM niveauplonger";
+            string query = "SELECT * FROM siteplonger";
 
             //Create a list to store the result
-            List<NiveauPlonger> dbNiveauPlonger = new List<NiveauPlonger>();
+            List<SitePlonger> dbSitePlonger = new List<SitePlonger>();
 
             //Ouverture connection
             if (Bdd.OpenConnection() == true)
@@ -310,8 +310,8 @@ namespace Nemo
                 //Lecture des données et stockage dans la collection
                 while (dataReader.Read())
                 {
-                    NiveauPlonger leNiveauPlonger = new NiveauPlonger(Convert.ToInt32(dataReader["IdNiveauPlonger"]), Convert.ToString(dataReader["DescriptionNiveauPlonger"]));
-                    dbNiveauPlonger.Add(leNiveauPlonger);
+                    SitePlonger leSitePlonger = new SitePlonger(Convert.ToInt32(dataReader["IdNiveauPlonger"]), Convert.ToString(dataReader["NomSitePlonger"]), Convert.ToInt32(dataReader["ProfondeurMaxSitePlonger"]));
+                    dbSitePlonger.Add(leSitePlonger);
                 }
 
                 //fermeture du Data Reader
@@ -330,7 +330,7 @@ namespace Nemo
         }
 
         //Méthode qui renvoie l'enregistrement concerné par rapport au numéro pour la table RendezVous
-        public static NiveauPlonger SearchSitePlonger(int idSitePlonger)
+        public static SitePlonger SearchSitePlonger(int idSitePlonger)
         {
             //Select statement
             string query = "SELECT * FROM siteplonger  WHERE IdSitePlonger = " + idSitePlonger;
@@ -349,8 +349,8 @@ namespace Nemo
                 //Lecture des données et stockage dans la collection
                 while (dataReaderS.Read())
                 {
-                    NiveauPlonger leNiveauPlonger = new NiveauPlonger(Convert.ToInt32(dataReaderS["IdNiveauPlonger"]), Convert.ToString(dataReaderS["DescriptionNiveauPlonger"]));
-                    dbNiveauPlonger.Add(leNiveauPlonger);
+                    SitePlonger leSitePlonger = new SitePlonger(Convert.ToInt32(dataReaderS["IdSitePlonger"]), Convert.ToString(dataReaderS["NomSitePlonger"]), Convert.ToInt32(dataReaderS["ProfondeurMaxSitePlonger"]));
+                    dbSitePlonger.Add(leSitePlonger);
                 }
 
                 //fermeture du Data Reader
@@ -360,13 +360,13 @@ namespace Nemo
                 Bdd.CloseConnection();
 
                 //retour de la collection pour être affichée
-                return dbNiveauPlonger[0];
+                return dbSitePlonger[0];
 
             }
             else
             {
                 //retour de la collection pour être affichée
-                return dbNiveauPlonger[0];
+                return dbSitePlonger[0];
             }
 
         }
