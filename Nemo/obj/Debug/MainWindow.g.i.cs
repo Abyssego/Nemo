@@ -1,8 +1,12 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿#pragma checksum "..\..\MainWindow.xaml" "{8829d00f-11b8-4213-878b-770e8597ac16}" "E0ADCDC4F965586DA9E9E926DB856AF422B6322E7BE1F3548FA3D5F926F14C0E"
 =======
 ﻿#pragma checksum "..\..\MainWindow.xaml" "{8829d00f-11b8-4213-878b-770e8597ac16}" "6385E3D6AD139427AC00C5440146607F9F5B76ED132BA6A60620CD84A7CF24F7"
+>>>>>>> Stashed changes
+=======
+﻿#pragma checksum "..\..\MainWindow.xaml" "{8829d00f-11b8-4213-878b-770e8597ac16}" "FAE8FD285A12B0C7A3AE8E0A95D723D8F52317B8D12E4F96FFDB3EC610E69FE5"
 >>>>>>> Stashed changes
 =======
 ﻿#pragma checksum "..\..\MainWindow.xaml" "{8829d00f-11b8-4213-878b-770e8597ac16}" "FAE8FD285A12B0C7A3AE8E0A95D723D8F52317B8D12E4F96FFDB3EC610E69FE5"
@@ -51,6 +55,7 @@ namespace Nemo {
         
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         #line 10 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.DataGrid dataGridClients;
@@ -60,6 +65,8 @@ namespace Nemo {
         internal System.Windows.Controls.Frame mainFrame;
 >>>>>>> Stashed changes
 =======
+=======
+>>>>>>> Stashed changes
         #line 13 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox cboPlongeur;
@@ -71,6 +78,9 @@ namespace Nemo {
         #line 15 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox cboMoniteur;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         
         #line default
@@ -109,6 +119,7 @@ namespace Nemo {
             case 1:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             this.dataGridClients = ((System.Windows.Controls.DataGrid)(target));
             return;
             case 2:
@@ -131,11 +142,16 @@ namespace Nemo {
             return;
 >>>>>>> Stashed changes
 =======
+=======
+>>>>>>> Stashed changes
             this.cboPlongeur = ((System.Windows.Controls.ComboBox)(target));
             return;
             case 2:
             this.cboMoniteur = ((System.Windows.Controls.ComboBox)(target));
             return;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             }
             this._contentLoaded = true;
