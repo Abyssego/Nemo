@@ -107,6 +107,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Plonger.cs" />
+    <Compile Include="SitePlonger.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NiveauPlonger.cs" />
+    <Compile Include="ParticipantPlonger.cs" />
     <Compile Include="Personnel.cs" />
     <Compile Include="Plongeur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
