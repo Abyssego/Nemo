@@ -11,9 +11,9 @@ namespace Nemo
         private int _numPlongeur;
         private string _nomPlongeur;
         private string _prenomPlongeur;
-        private NiveauPlongeur _leNiveauPlongeur;
+        private NiveauPlonger _leNiveauPlongeur;
 
-        public Plongeur(int numPlongeur, string nomPlongeur, string prenomPlongeur, NiveauPlongeur leNiveauPlongeur)
+        public Plongeur(int numPlongeur, string nomPlongeur, string prenomPlongeur, NiveauPlonger leNiveauPlongeur)
         {
             _numPlongeur = numPlongeur;
             _nomPlongeur = nomPlongeur;
@@ -39,7 +39,7 @@ namespace Nemo
             set { _prenomPlongeur = value; }
         }
 
-        public NiveauPlongeur LeNiveauPlongeur
+        public NiveauPlonger LeNiveauPlongeur
         {
             get { return _leNiveauPlongeur; }
             set { _leNiveauPlongeur = value; }

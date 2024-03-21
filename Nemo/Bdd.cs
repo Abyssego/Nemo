@@ -85,11 +85,11 @@ namespace Nemo
 
 
 
-        //Méthode pour insérer un nouvel enregistrement à la table RendezVous
-        public static void InsertPlongeur(string nomRendezVous, string prenomRendezVous, string mailRendezVous, string telRendezVous, int numSirenRendezVous, string nomSocieteRendezVous, string villeRendezVous, string cpRendezVous, string adresseRendezVous, string dateRendezVous, string heureDebutRendezVous, string heureFinRendezVous, string butRendezVous, string descriptionRendezVous, int confirmationRendezVous, int numCommerciaux)
+        //Méthode pour insérer un nouvel enregistrement à la table NiveauPlonger
+        public static void InsertNiveauPlonger(string nomNiveauPlonger, string prenomNiveauPlonger)
         {
             //Requête Insertion RendezVous
-            string query = "INSERT INTO rendezvous (nomRendezVous, prenomRendezVous, mailRendezVous, telRendezVous, numSirenRendezVous, nomSocieteRendezVous, villeRendezVous, cpRendezVous, adresseRendezVous, dateRendezVous, heureDebutRendezVous, heureFinRendezVous, butRendezVous, descriptionRendezVous, confirmationRendezVous, numCommerciaux) VALUES('" + nomRendezVous + "','" + prenomRendezVous + "','" + mailRendezVous + "','" + telRendezVous + "','" + numSirenRendezVous + "','" + nomSocieteRendezVous + "','" + villeRendezVous + "','" + cpRendezVous + "','" + adresseRendezVous + "','" + dateRendezVous + "','" + heureDebutRendezVous + "','" + heureFinRendezVous + "','" + butRendezVous + "','" + descriptionRendezVous + "','" + confirmationRendezVous + "','" + numCommerciaux + "')";
+            string query = "INSERT INTO niveauplonger (nomRendezVous, prenomRendezVous) VALUES('" + nomNiveauPlonger + "','" + prenomNiveauPlonger + "')";
             MessageBox.Show(Convert.ToString(query));
             //open connection
             if (Bdd.OpenConnection() == true)
@@ -106,10 +106,10 @@ namespace Nemo
         }
 
 
-        public static void UpdatePlongeur(int numRendezVous, string nomRendezVous, string prenomRendezVous, string mailRendezVous, string telRendezVous, int numSirenRendezVous, string nomSocieteRendezVous, string villeRendezVous, string cpRendezVous, string adresseRendezVous, string dateRendezVous, string heureDebutRendezVous, string heureFinRendezVous, string butRendezVous, string descriptionRendezVous, int confirmationRendezVous, int NumCommerciaux)
+        public static void UpdateNiveauPlonger(int numNiveauPlonger, string descriptionNiveauPlonger)
         {
             //Update RendezVous
-            string query = "UPDATE rendezvous SET numRendezVous='" + numRendezVous + "', nomRendezVous='" + nomRendezVous + "', prenomRendezVous='" + prenomRendezVous + "', mailRendezVous ='" + mailRendezVous + "', telRendezVous ='" + telRendezVous + "', numSirenRendezVous ='" + numSirenRendezVous + "', nomSocieteRendezVous ='" + nomSocieteRendezVous + "', villeRendezVous ='" + villeRendezVous + "', cpRendezVous = '" + cpRendezVous + "', adresseRendezVous ='" + adresseRendezVous + "', dateRendezVous = '" + dateRendezVous + "', heureDebutRendezVous ='" + heureDebutRendezVous + "', heureFinRendezVous = '" + heureFinRendezVous + "', butRendezVous ='" + butRendezVous + "', descriptionRendezVous ='" + descriptionRendezVous + "', confirmationRendezVous='" + confirmationRendezVous + "', numCommerciaux='" + NumCommerciaux + "' WHERE numRendezVous=" + numRendezVous;
+            string query = "UPDATE rendezvous SET IdNiveauPlonger='" + numNiveauPlonger + "', DescriptionNiveauPlonger='" + descriptionNiveauPlonger + "' WHERE IdNiveauPlonger=" + numNiveauPlonger;
             Console.WriteLine(query);
             MessageBox.Show(Convert.ToString(query));
             //Open connection
@@ -132,10 +132,10 @@ namespace Nemo
 
 
         //Méthode pour supprimer un élément au numéro donnée de la table RendezVous
-        public static void DeletePlongeur(int numRendezVous)
+        public static void DeleteNiveauPlonger(int numNiveauPlonger)
         {
             //Delete Contrat
-            string query = "DELETE FROM RendezVous WHERE numRendezVous=" + numRendezVous;
+            string query = "DELETE FROM NiveauPlonger WHERE numNiveauPlonger=" + numNiveauPlonger;
 
             if (Bdd.OpenConnection() == true)
             {
@@ -147,13 +147,13 @@ namespace Nemo
 
 
         //Méthode pour afficher tous les enregistrements de la table RendezVous
-        public static List<Plongeur> SelectRendezVous()
+        public static List<NiveauPlonger> SelectRendezVous()
         {
             //Select statement
-            string query = "SELECT * FROM rendezvous INNER JOIN commerciaux ON rendezvous.numCommerciaux = commerciaux.numCommerciaux INNER JOIN identification ON commerciaux.numPassword = identification.numPassword";
+            string query = "SELECT * FROM niveauplonger";
 
             //Create a list to store the result
-            List<Plongeur> dbRendezVous = new List<Plongeur>();
+            List<NiveauPlonger> dbNiveauPlonger = new List<NiveauPlonger>();
 
             //Ouverture connection
             if (Bdd.OpenConnection() == true)
@@ -166,10 +166,8 @@ namespace Nemo
                 //Lecture des données et stockage dans la collection
                 while (dataReader.Read())
                 {
-                    Identification leIdentification = new Identification(Convert.ToInt32(dataReader["numPassword"]), Convert.ToString(dataReader["Password"]));
-                    Commerciaux leCommerciaux = new Commerciaux(Convert.ToInt16(dataReader["numCommerciaux"]), Convert.ToString(dataReader["nomCommerciaux"]), Convert.ToString(dataReader["prenomCommerciaux"]), Convert.ToString(dataReader["adresseCommerciaux"]), Convert.ToString(dataReader["villeCommerciaux"]), Convert.ToString(dataReader["cpCommerciaux"]), Convert.ToString(dataReader["mailCommerciaux"]), Convert.ToString(dataReader["telCommerciaux"]), leIdentification);
-                    RendezVous leRendezVous = new RendezVous(Convert.ToInt16(dataReader["numRendezVous"]), Convert.ToString(dataReader["nomRendezVous"]), Convert.ToString(dataReader["prenomRendezVous"]), Convert.ToString(dataReader["mailRendezVous"]), Convert.ToString(dataReader["telRendezVous"]), Convert.ToInt32(dataReader["numSirenRendezVous"]), Convert.ToString(dataReader["nomSocieteRendezVous"]), Convert.ToString(dataReader["villeRendezVous"]), Convert.ToString(dataReader["cpRendezVous"]), Convert.ToString(dataReader["adresseRendezVous"]), Convert.ToString(dataReader["dateRendezVous"]), Convert.ToString(dataReader["heureDebutRendezVous"]), Convert.ToString(dataReader["heureFinRendezVous"]), Convert.ToString(dataReader["butRendezVous"]), Convert.ToString(dataReader["descriptionRendezVous"]), Convert.ToInt32(dataReader["confirmationRendezVous"]), leCommerciaux);
-                    dbRendezVous.Add(leRendezVous);
+                    NiveauPlonger leNiveauPlonger = new NiveauPlonger(Convert.ToInt32(dataReader["IdNiveauPlonger"]), Convert.ToString(dataReader["DescriptionNiveauPlonger"]));
+                    dbNiveauPlonger.Add(leNiveauPlonger);
                 }
 
                 //fermeture du Data Reader
@@ -179,22 +177,22 @@ namespace Nemo
                 Bdd.CloseConnection();
 
                 //retour de la collection pour être affichée
-                return dbRendezVous;
+                return dbNiveauPlonger;
             }
             else
             {
-                return dbRendezVous;
+                return dbNiveauPlonger;
             }
         }
 
         //Méthode qui renvoie l'enregistrement concerné par rapport au numéro pour la table RendezVous
-        public static RendezVous SearchRendezVous(int numRendezVous)
+        public static NiveauPlonger SearchNiveauPlonger(int idNiveauPlonger)
         {
             //Select statement
-            string query = "SELECT * FROM rendezvous INNER JOIN commerciaux ON rendezvous.numCommerciaux = commerciaux.numCommerciaux INNER JOIN identification ON commerciaux.numPassword = identification.numPassword WHERE numRendezVous = " + numRendezVous;
+            string query = "SELECT * FROM niveauplonger  WHERE IdNiveauPlonger = " + idNiveauPlonger;
 
             //Create a list to store the result
-            List<RendezVous> dbRendezVous = new List<RendezVous>();
+            List<NiveauPlonger> dbNiveauPlonger = new List<NiveauPlonger>();
 
             //Ouverture connection
             if (Bdd.OpenConnection() == true)
@@ -207,10 +205,8 @@ namespace Nemo
                 //Lecture des données et stockage dans la collection
                 while (dataReaderS.Read())
                 {
-                    Identification leIdentification = new Identification(Convert.ToInt32(dataReaderS["numPassword"]), Convert.ToString(dataReaderS["Password"]));
-                    Commerciaux leCommerciaux = new Commerciaux(Convert.ToInt16(dataReaderS["numcommerciaux"]), Convert.ToString(dataReaderS["nomcommerciaux"]), Convert.ToString(dataReaderS["prenomcommerciaux"]), Convert.ToString(dataReaderS["adressecommerciaux"]), Convert.ToString(dataReaderS["villecommerciaux"]), Convert.ToString(dataReaderS["cpcommerciaux"]), Convert.ToString(dataReaderS["mailcommerciaux"]), Convert.ToString(dataReaderS["telcommerciaux"]), leIdentification);
-                    RendezVous leRendezVous = new RendezVous(Convert.ToInt32(dataReaderS["numRendezVous"]), Convert.ToString(dataReaderS["nomRendezVous"]), Convert.ToString(dataReaderS["prenomRendezVous"]), Convert.ToString(dataReaderS["mailRendezVous"]), Convert.ToString(dataReaderS["telRendezVous"]), Convert.ToInt32(dataReaderS["numSirenRendezVous"]), Convert.ToString(dataReaderS["nomSocieteRendezVous"]), Convert.ToString(dataReaderS["villeRendezVous"]), Convert.ToString(dataReaderS["cpRendezVous"]), Convert.ToString(dataReaderS["adresseRendezVous"]), Convert.ToString(dataReaderS["dateSirenRendezVous"]), Convert.ToString(dataReaderS["heureDebutRendezVous"]), Convert.ToString(dataReaderS["heureFinRendezVous"]), Convert.ToString(dataReaderS["butRendezVous"]), Convert.ToString(dataReaderS["descriptionRendezVous"]), Convert.ToInt32(dataReaderS["confirmationRendezVous"]), leCommerciaux);
-                    dbRendezVous.Add(leRendezVous);
+                    NiveauPlonger leNiveauPlonger = new NiveauPlonger(Convert.ToInt32(dataReaderS["IdNiveauPlonger"]), Convert.ToString(dataReaderS["DescriptionNiveauPlonger"]));
+                    dbNiveauPlonger.Add(leNiveauPlonger);
                 }
 
                 //fermeture du Data Reader
@@ -220,13 +216,13 @@ namespace Nemo
                 Bdd.CloseConnection();
 
                 //retour de la collection pour être affichée
-                return dbRendezVous[0];
+                return dbNiveauPlonger[0];
 
             }
             else
             {
                 //retour de la collection pour être affichée
-                return dbRendezVous[0];
+                return dbNiveauPlonger[0];
             }
 
         }
