@@ -512,6 +512,8 @@ namespace Nemo
                 {
                     SitePlonger leSitePlonger = new SitePlonger(Convert.ToInt32(dataReaderS["IdNiveauPlonger"]), Convert.ToString(dataReaderS["NomSitePlonger"]), Convert.ToInt32(dataReaderS["ProfondeurMaxSitePlonger"]));
                     Plonger lePlonger = new Plonger(Convert.ToInt32(dataReaderS["IdPlonger"]), leSitePlonger, Convert.ToString(dataReaderS["DatePlonger"]), Convert.ToString(dataReaderS["DurerPlonger"]), Convert.ToString(dataReaderS["TypePlonger"]));
+                    Plongeur
+                    Personnel
                     ParticipantPlonger leParticipantPlonger = new ParticipantPlonger(Convert.ToInt32(dataReaderS["IdParticipantPlonger"]), Convert.ToString(dataReaderS["NomSitePlonger"]), Convert.ToInt32(dataReaderS["ProfondeurMaxSitePlonger"]));
                     dbParticipantPlonger.Add(leParticipantPlonger);
                 }
