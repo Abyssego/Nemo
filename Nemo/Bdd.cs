@@ -147,7 +147,7 @@ namespace Nemo
 
 
         //Méthode pour afficher tous les enregistrements de la table RendezVous
-        public static List<NiveauPlonger> SelectRendezVous()
+        public static List<NiveauPlonger> SelectNiveauPlonger()
         {
             //Select statement
             string query = "SELECT * FROM niveauplonger";
@@ -227,6 +227,149 @@ namespace Nemo
 
         }
 
+
+
+        //Méthode pour insérer un nouvel enregistrement à la table NiveauPlonger
+        public static void InsertNiveauPlonger(string nomNiveauPlonger, string prenomNiveauPlonger)
+        {
+            //Requête Insertion RendezVous
+            string query = "INSERT INTO niveauplonger (nomRendezVous, prenomRendezVous) VALUES('" + nomNiveauPlonger + "','" + prenomNiveauPlonger + "')";
+            MessageBox.Show(Convert.ToString(query));
+            //open connection
+            if (Bdd.OpenConnection() == true)
+            {
+                //create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                //Execute command
+                cmd.ExecuteNonQuery();
+
+                //close connection
+                Bdd.CloseConnection();
+            }
+        }
+
+
+        public static void UpdateNiveauPlonger(int numNiveauPlonger, string descriptionNiveauPlonger)
+        {
+            //Update RendezVous
+            string query = "UPDATE rendezvous SET IdNiveauPlonger='" + numNiveauPlonger + "', DescriptionNiveauPlonger='" + descriptionNiveauPlonger + "' WHERE IdNiveauPlonger=" + numNiveauPlonger;
+            Console.WriteLine(query);
+            MessageBox.Show(Convert.ToString(query));
+            //Open connection
+            if (Bdd.OpenConnection() == true)
+            {
+                //create mysql command
+                MySqlCommand cmd = new MySqlCommand();
+                //Assign the query using CommandText
+                cmd.CommandText = query;
+                //Assign the connection using Connection
+                cmd.Connection = connection;
+
+                //Execute query
+                cmd.ExecuteNonQuery();
+
+                //close connection
+                Bdd.CloseConnection();
+            }
+        }
+
+
+        //Méthode pour supprimer un élément au numéro donnée de la table RendezVous
+        public static void DeleteNiveauPlonger(int numNiveauPlonger)
+        {
+            //Delete Contrat
+            string query = "DELETE FROM NiveauPlonger WHERE numNiveauPlonger=" + numNiveauPlonger;
+
+            if (Bdd.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                Bdd.CloseConnection();
+            }
+        }
+
+
+        //Méthode pour afficher tous les enregistrements de la table RendezVous
+        public static List<NiveauPlonger> SelectSitePlonger()
+        {
+            //Select statement
+            string query = "SELECT * FROM niveauplonger";
+
+            //Create a list to store the result
+            List<NiveauPlonger> dbNiveauPlonger = new List<NiveauPlonger>();
+
+            //Ouverture connection
+            if (Bdd.OpenConnection() == true)
+            {
+                //Creation Command MySQL
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Création d'un DataReader et execution de la commande
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Lecture des données et stockage dans la collection
+                while (dataReader.Read())
+                {
+                    NiveauPlonger leNiveauPlonger = new NiveauPlonger(Convert.ToInt32(dataReader["IdNiveauPlonger"]), Convert.ToString(dataReader["DescriptionNiveauPlonger"]));
+                    dbNiveauPlonger.Add(leNiveauPlonger);
+                }
+
+                //fermeture du Data Reader
+                dataReader.Close();
+
+                //fermeture Connection
+                Bdd.CloseConnection();
+
+                //retour de la collection pour être affichée
+                return dbSitePlonger;
+            }
+            else
+            {
+                return dbSitePlonger;
+            }
+        }
+
+        //Méthode qui renvoie l'enregistrement concerné par rapport au numéro pour la table RendezVous
+        public static NiveauPlonger SearchSitePlonger(int idSitePlonger)
+        {
+            //Select statement
+            string query = "SELECT * FROM siteplonger  WHERE IdSitePlonger = " + idSitePlonger;
+
+            //Create a list to store the result
+            List<SitePlonger> dbSitePlonger = new List<SitePlonger>();
+
+            //Ouverture connection
+            if (Bdd.OpenConnection() == true)
+            {
+                //Creation Command MySQL
+                MySqlCommand cmdS = new MySqlCommand(query, connection);
+                //Création d'un DataReader et execution de la commande
+                MySqlDataReader dataReaderS = cmdS.ExecuteReader();
+
+                //Lecture des données et stockage dans la collection
+                while (dataReaderS.Read())
+                {
+                    NiveauPlonger leNiveauPlonger = new NiveauPlonger(Convert.ToInt32(dataReaderS["IdNiveauPlonger"]), Convert.ToString(dataReaderS["DescriptionNiveauPlonger"]));
+                    dbNiveauPlonger.Add(leNiveauPlonger);
+                }
+
+                //fermeture du Data Reader
+                dataReaderS.Close();
+
+                //fermeture Connection
+                Bdd.CloseConnection();
+
+                //retour de la collection pour être affichée
+                return dbNiveauPlonger[0];
+
+            }
+            else
+            {
+                //retour de la collection pour être affichée
+                return dbNiveauPlonger[0];
+            }
+
+        }
 
     }
 
