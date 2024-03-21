@@ -8,47 +8,55 @@ namespace Nemo
 {
     public class Plonger
     {
-        private int _numPlongeur;
-        private string _nomPlongeur;
-        private string _prenomPlongeur;
-        private NiveauPlonger _leNiveauPlongeur;
+        private int _numPlonger;
+        private SitePlonger _leSitePlonger;
+        private string _datePlonger;
+        private string _durerPlonger;
+        private string _typePlonger;
 
-        public Plongeur(int numPlongeur, string nomPlongeur, string prenomPlongeur, NiveauPlonger leNiveauPlongeur)
+
+        public Plonger(int numPlonger, SitePlonger leSitePlonger, string datePlonger, string durerPlonger, string typePlonger)
         {
-            _numPlongeur = numPlongeur;
-            _nomPlongeur = nomPlongeur;
-            _prenomPlongeur = prenomPlongeur;
-            _leNiveauPlongeur = leNiveauPlongeur;
+            _numPlonger = numPlonger;
+            _leSitePlonger = leSitePlonger;
+            _datePlonger = datePlonger;
+            _durerPlonger = durerPlonger;
+            _typePlonger = typePlonger;
         }
 
-        public int NumPlongeur
+        public int NumPlonger
         {
-            get { return _numPlongeur; }
-            set { _numPlongeur = value; }
+            get { return _numPlonger; }
+            set { _numPlonger = value; }
         }
 
-        public string NomPlongeur
+        public SitePlonger LeSitePlonger
         {
-            get { return _nomPlongeur; }
-            set { _nomPlongeur = value; }
+            get { return _leSitePlonger; }
+            set { _leSitePlonger = value; }
         }
 
-        public string PrenomPlongeur
+        public string DatePlonger
         {
-            get { return _prenomPlongeur; }
-            set { _prenomPlongeur = value; }
+            get { return _datePlonger; }
+            set { _datePlonger = value; }
         }
 
-        public NiveauPlonger LeNiveauPlongeur
+        public string DurerPlonger
         {
-            get { return _leNiveauPlongeur; }
-            set { _leNiveauPlongeur = value; }
+            get { return _durerPlonger; }
+            set { _durerPlonger = value; }
         }
 
+        public string Typeplonger
+        {
+            get { return _typePlonger; }
+            set { _typePlonger = value; }
+        }
 
         public override string ToString()
         {
-            return NumPlongeur.ToString();
+            return NumPlonger.ToString();
         }
     }
 }
