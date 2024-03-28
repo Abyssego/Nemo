@@ -1,4 +1,4 @@
-<Window x:Class="Nemo.MainWindow"
+﻿<Window x:Class="Nemo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,13 +6,35 @@
         xmlns:local="clr-namespace:Nemo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="410" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <TextBlock x:Name="txtNom" HorizontalAlignment="Left" Height="30" Margin="449,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106"><Run Language="fr-fr" Text="//Nom Plongeur"/></TextBlock>
-        <TextBlock x:Name="txtPrenom" HorizontalAlignment="Left" Height="30" Margin="626,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111"><Run Language="fr-fr" Text="//Prenom plongeur"/></TextBlock>
-        <TextBox x:Name="txtNiveau" HorizontalAlignment="Left" Height="34" Margin="581,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
-        <Label Content="Niveau :" HorizontalAlignment="Left" Height="34" Margin="502,168,0,0" VerticalAlignment="Top" Width="62"/>
-        <Button x:Name="btnModif" Content="Modifier" HorizontalAlignment="Left" Height="38" Margin="527,273,0,0" VerticalAlignment="Top" Width="166" Click="btnModif_Click"/>
 
-    </Grid>
+    <TabControl Name="tabControl1" HorizontalAlignment="Left" Height="388" Margin="10,10,0,0" VerticalAlignment="Top" Width="770" Opacity="1" Background="#FFE2E2E2">
+        <TabItem Header="Plongeur">
+            <Grid Margin="0,0,0,0">
+                <DataGrid x:Name="DtgPlongeur" HorizontalAlignment="Left" Height="350" VerticalAlignment="Center" Width="410" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                <TextBlock x:Name="txtNom" HorizontalAlignment="Left" Height="30" Margin="449,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106"><Run Language="fr-fr" Text="//Nom Plongeur"/></TextBlock>
+                <TextBlock x:Name="txtPrenom" HorizontalAlignment="Left" Height="30" Margin="626,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111"><Run Language="fr-fr" Text="//Prenom plongeur"/></TextBlock>
+                <TextBox x:Name="txtNiveau" HorizontalAlignment="Left" Height="34" Margin="451,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+                <Label Content="Niveau :" HorizontalAlignment="Left" Height="31" Margin="449,134,0,0" VerticalAlignment="Top" Width="62"/>
+                <Button x:Name="btnModifPlongeur" Content="Modifier" HorizontalAlignment="Left" Height="38" Margin="527,273,0,0" VerticalAlignment="Top" Width="166" Click="btnModifPlongeur_Click"/>
+                <TextBox x:Name="txtProfondeur" HorizontalAlignment="Left" Height="34" Margin="554,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" />
+                <Label Content="Profondeur (m)" HorizontalAlignment="Left" Height="31" Margin="532,134,0,0" VerticalAlignment="Top" Width="100"/>
+                <TextBox x:Name="txtAccompagne" HorizontalAlignment="Left" Height="34" Margin="667,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+                <Label Content="Accompagné" HorizontalAlignment="Left" Height="31" Margin="659,134,0,0" VerticalAlignment="Top" Width="86"/>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Personnel">
+            <Grid Margin="0,0,0,0">
+                <DataGrid x:Name="DtgPersonnel" HorizontalAlignment="Left" Height="340" Margin="10,0,0,0" VerticalAlignment="Center" Width="345" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                <TextBox x:Name="txtNomPersonnel" HorizontalAlignment="Left" Height="30" Margin="490,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txtPNomPersonnel" HorizontalAlignment="Left" Height="30" Margin="490,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="txtRolePersonnel" HorizontalAlignment="Left" Height="30" Margin="490,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Nom" HorizontalAlignment="Left" Height="30" Margin="490,18,0,0" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center"/>
+                <Label Content="Prénom" HorizontalAlignment="Left" Height="30" Margin="490,130,0,0" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center"/>
+                <Label Content="Role" HorizontalAlignment="Left" Height="30" Margin="490,228,0,0" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center"/>
+                <Button x:Name="btnModifPersonnel" Content="Modifier" HorizontalAlignment="Left" Height="37" Margin="461,313,0,0" VerticalAlignment="Top" Width="177" Click="btnModifPersonnel_Click"/>
+
+            </Grid>
+        </TabItem>
+    </TabControl>
 </Window>
