@@ -7,28 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TabControl>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5">
-                    <ComboBox x:Name="cboPlongeur" Width="120" Margin="124,90,550,281"/>
-                    <Label Content="Plongeur :" Margin="124,56,598,321"/>
-                    <ComboBox x:Name="cboMoniteur" Width="120" Margin="337,90,337,281"/>
-                    <Label Content="Moniteur :" Margin="337,56,385,321"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-        </TabControl>
+        <TextBox x:Name="TxtNomPlongeur" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Margin="469,100,0,0" TextWrapping="Wrap"  Width="150" FontSize="14.667" FontWeight="Bold" IsEnabled="False"/>
+        <TextBox x:Name="TxtPrenomPlongeur" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Margin="469,47,0,0" TextWrapping="Wrap" Width="150" FontSize="14.667" FontWeight="Bold" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="351,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"><Run Language="fr-fr" Text="Prenom Du Plongeur:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="0,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34"><Run Language="fr-fr" Text="Nom Du Plongeur:"/></TextBlock>
+        <TextBox x:Name ="TxtNiveauPlongée" HorizontalAlignment="Left" Margin="490,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.045,-2.491" Height="31" FontWeight="Bold" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.4,2.977" Text="Niveau Du Plongeur "/>
+        <ComboBox x:Name="cboPlongeur" HorizontalAlignment="Left" Margin="131,113,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cboPlongeur_SelectionChanged"/>
+        <ComboBox x:Name="cboPlongée" HorizontalAlignment="Left" Margin="131,243,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cboPlongée_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="fr-fr" Text="Lieux"/></TextBlock>
+        <TextBox x:Name="TxtLieuxPlongée" HorizontalAlignment="Left" Margin="469,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="TxtDatePlongée" HorizontalAlignment="Left" Margin="469,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="fr-fr" Text="Date"/></TextBlock>
 
     </Grid>
 </Window>
