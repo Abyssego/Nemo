@@ -12,11 +12,11 @@ namespace Nemo
         private string _nomSitePlonger;
         private int _profondeurMaxSitePlonger;
 
-        public SitePlonger(int numPlongeur, string nomPlongeur, int prenomPlongeur)
+        public SitePlonger(int numPlongeur, string nomPlongeur, int profondeurMaxSitePlonger)
         {
             _numSitePlonger = numPlongeur;
             _nomSitePlonger = nomPlongeur;
-            _profondeurMaxSitePlonger = prenomPlongeur;
+            _profondeurMaxSitePlonger = profondeurMaxSitePlonger;
         }
 
         public int NumSitePlonger

@@ -8,19 +8,18 @@ namespace Nemo
         private string _nom;
         private string _prenom;
         private string _role;
-        private string _diplome;
-        private string _email;
-        private string _telephone;
+        private string _dateEmbauche;
+        private string _statut;
 
-        public Personnel(int id, string nom, string prenom, string role, string diplome, string email, string telephone)
+
+        public Personnel(int id, string nom, string prenom, string role, string dateEmbauche, string statut)
         {
             _id = id;
             _nom = nom;
             _prenom = prenom;
             _role = role;
-            _diplome = diplome;
-            _email = email;
-            _telephone = telephone;
+            _dateEmbauche = dateEmbauche;
+            _statut = statut;
         }
 
         public int Id
@@ -47,27 +46,16 @@ namespace Nemo
             set { _role = value; }
         }
 
-        public string Diplome
+        public string DateEmbauche
         {
-            get { return _diplome; }
-            set { _diplome = value; }
+            get { return _dateEmbauche; }
+            set { _dateEmbauche = value; }
         }
 
-        public string Email
+        public string Statut
         {
-            get { return _email; }
-            set { _email = value; }
-        }
-
-        public string Telephone
-        {
-            get { return _telephone; }
-            set { _telephone = value; }
-        }
-
-        public override string ToString()
-        {
-            return Id.ToString();
+            get { return _statut; }
+            set { _statut = value; }
         }
     }
 }

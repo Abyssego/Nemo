@@ -229,6 +229,12 @@ namespace Nemo
 
 
 
+
+
+
+
+
+
         //Méthode pour insérer un nouvel enregistrement à la table NiveauPlonger
         public static void InsertSitePlonger(string nomNiveauPlonger, string prenomNiveauPlonger)
         {
@@ -371,6 +377,109 @@ namespace Nemo
 
         }
 
-    }
 
+
+
+
+
+
+
+
+        //Méthode pour supprimer un élément au numéro donnée de la table RendezVous
+        public static void DeletePersonnel(int numPersonnel)
+        {
+            //Delete Contrat
+            string query = "DELETE FROM Personnel WHERE IdPersonnelr=" + numPersonnel;
+
+            if (Bdd.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                Bdd.CloseConnection();
+            }
+        }
+
+
+        //Méthode pour afficher tous les enregistrements de la table RendezVous
+        public static List<Personnel> SelectPersonnel()
+        {
+            //Select statement
+            string query = "SELECT * FROM Personnel";
+
+            //Create a list to store the result
+            List<Personnel> dbPersonnel = new List<Personnel>();
+
+            //Ouverture connection
+            if (Bdd.OpenConnection() == true)
+            {
+                //Creation Command MySQL
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Création d'un DataReader et execution de la commande
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Lecture des données et stockage dans la collection
+                while (dataReader.Read())
+                {
+                    Personnel lePersonnel = new Personnel(Convert.ToInt32(dataReader["IdPersonnel"]), Convert.ToString(dataReader["NomPersonnel"]), Convert.ToString(dataReader["PrenomPersonnel"]), Convert.ToString(dataReader["RolePersonnel"]), Convert.ToString(dataReader["DateEmbauchePersonnel"]), Convert.ToString(dataReader["statutPersonnel"]));
+                    dbPersonnel.Add(lePersonnel);
+                }
+
+                //fermeture du Data Reader
+                dataReader.Close();
+
+                //fermeture Connection
+                Bdd.CloseConnection();
+
+                //retour de la collection pour être affichée
+                return dbPersonnel;
+            }
+            else
+            {
+                return dbPersonnel;
+            }
+        }
+
+        //Méthode qui renvoie l'enregistrement concerné par rapport au numéro pour la table RendezVous
+        public static Personnel SearchPersonnel(int idPersonnel)
+        {
+            //Select statement
+            string query = "SELECT * FROM personnel  WHERE IdPersonnel = " + idPersonnel;
+
+            //Create a list to store the result
+            List<Personnel> dbPersonnel = new List<Personnel>();
+
+            //Ouverture connection
+            if (Bdd.OpenConnection() == true)
+            {
+                //Creation Command MySQL
+                MySqlCommand cmdS = new MySqlCommand(query, connection);
+                //Création d'un DataReader et execution de la commande
+                MySqlDataReader dataReaderS = cmdS.ExecuteReader();
+
+                //Lecture des données et stockage dans la collection
+                while (dataReaderS.Read())
+                {
+                    Personnel lePersonnel = new Personnel(Convert.ToInt32(dataReaderS["IdPersonnel"]), Convert.ToString(dataReaderS["NomPersonnel"]), Convert.ToString(dataReaderS["PrenomPersonnel"]), Convert.ToString(dataReaderS["RolePersonnel"]), Convert.ToString(dataReaderS["DateEmbauchePersonnel"]), Convert.ToString(dataReaderS["statutPersonnel"]));
+                    dbPersonnel.Add(lePersonnel);
+                }
+
+                //fermeture du Data Reader
+                dataReaderS.Close();
+
+                //fermeture Connection
+                Bdd.CloseConnection();
+
+                //retour de la collection pour être affichée
+                return dbPersonnel[0];
+
+            }
+            else
+            {
+                //retour de la collection pour être affichée
+                return dbPersonnel[0];
+            }
+
+        }
+
+    }
 }
