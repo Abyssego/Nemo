@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nemo // loan est moche
+namespace Nemo // loan est beau
 {
     public class Plonger
     {
