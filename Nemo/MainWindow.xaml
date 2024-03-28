@@ -3,16 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Nemo"
+        xmlns:local="clr-namespace:Nemo"git status
+
         mc:Ignorable="d"
         Title="MainWindow" Height="456" Width="914">
     <Grid>
         <TabControl>
-            <TabItem Header="TabItem">
+            <TabItem Header="Gestion du personnel">
                 <Grid Background="#FFE5E5E5">
                     <ComboBox x:Name="cboPersonelle" Width="120" Margin="124,90,550,281"/>
                     <Label Content="Personnelle :" Margin="124,56,667,321"/>
                     <Button Content="Supprimer" Margin="340,87,429,265" Click="ButtonPersonnelSupprimer_Click"/>
+                    
+                    <Label Content="Nouveau Statut :" Margin="124,160,667,217"/>
+                    <ComboBox x:Name="cboNouveauStatut" Width="120" Margin="124,194,550,177" VerticalAlignment="Top">
+                        <ComboBoxItem Content="Actif"/>
+                        <ComboBoxItem Content="Inactif"/>
+                    </ComboBox>
+                    <Button Content="Changer le Statut" Margin="340,191,429,161" Click="ButtonChangerStatut_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
@@ -28,6 +36,5 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-
     </Grid>
 </Window>

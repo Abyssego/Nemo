@@ -60,5 +60,33 @@ namespace Nemo
             cboPersonelle.Items.Refresh();
 
         }
+
+        private void ButtonChangerStatut_Click(object sender, RoutedEventArgs e)
+        {
+            Personnel selectedPersonnel = cboPersonelle.SelectedItem as Personnel;
+            ComboBoxItem selectedStatutItem = cboNouveauStatut.SelectedItem as ComboBoxItem;
+            string nouveauStatut = selectedStatutItem.Content.ToString();
+
+            if (selectedPersonnel == null || selectedStatutItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un membre du personnel et un nouveau statut.", "Sélection manquante", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            bool miseAJourReussie = Bdd.UpdatePersonnelStatut(selectedPersonnel.Id, nouveauStatut);
+
+            if (miseAJourReussie)
+            {
+                MessageBox.Show($"Le statut de {selectedPersonnel.Nom} a été changé en '{nouveauStatut}'.", "Statut mis à jour", MessageBoxButton.OK, MessageBoxImage.Information);
+                lesPersonnel = Bdd.SelectPersonnel();
+                cboPersonelle.ItemsSource = lesPersonnel;
+                cboPersonelle.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("La mise à jour du statut a échoué.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
     }
 }
