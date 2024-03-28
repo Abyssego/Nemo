@@ -39,6 +39,26 @@ namespace Nemo
             Bdd.Initialize();
 
 
+            cboPersonelle.ItemsSource = Bdd.SelectPersonnel();
+
+            cboPersonelle.Items.Refresh();
+
+            cboPersonelle.SelectedIndex = 0;
+
+        }
+
+        private void ButtonPersonnelSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            Personnel selectedPersonnel = cboPersonelle.SelectedItem as Personnel;
+            Bdd.DeletePersonnel(selectedPersonnel.Id);
+
+            lesPersonnel.Clear();
+            lesPersonnel = Bdd.SelectPersonnel();
+
+            cboPersonelle.ItemsSource = lesPersonnel;
+            cboPersonelle.SelectedItem = 0;
+            cboPersonelle.Items.Refresh();
+
         }
     }
 }

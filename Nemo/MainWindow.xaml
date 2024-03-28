@@ -5,15 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="456" Width="914">
     <Grid>
         <TabControl>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5">
-                    <ComboBox x:Name="cboPlongeur" Width="120" Margin="124,90,550,281"/>
-                    <Label Content="Plongeur :" Margin="124,56,598,321"/>
-                    <ComboBox x:Name="cboMoniteur" Width="120" Margin="337,90,337,281"/>
-                    <Label Content="Moniteur :" Margin="337,56,385,321"/>
+                    <ComboBox x:Name="cboPersonelle" Width="120" Margin="124,90,550,281"/>
+                    <Label Content="Personnelle :" Margin="124,56,667,321"/>
+                    <Button Content="Supprimer" Margin="340,87,429,265" Click="ButtonPersonnelSupprimer_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
