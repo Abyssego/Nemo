@@ -21,7 +21,7 @@ namespace Nemo
             _leSitePlonger = leSitePlonger;
             _datePlonger = datePlonger;
             _durerPlonger = durerPlonger;
-            _typePlonger = typePlonger;
+            _typePlonger = typePlonger; //loan est beau
         }
 
         public int NumPlonger
