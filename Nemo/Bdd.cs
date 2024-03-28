@@ -389,7 +389,7 @@ namespace Nemo
         public static void DeletePersonnel(int numPersonnel)
         {
             //Delete Contrat
-            string query = "DELETE FROM Personnel WHERE IdPersonnelr=" + numPersonnel;
+            string query = "DELETE FROM Personnel WHERE IdPersonnel=" + numPersonnel;
 
             if (Bdd.OpenConnection() == true)
             {

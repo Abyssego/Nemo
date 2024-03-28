@@ -57,5 +57,10 @@ namespace Nemo
             get { return _statut; }
             set { _statut = value; }
         }
+
+        public override string ToString()
+        {
+            return Nom.ToString() + " " + Prenom.ToString();
+        }
     }
 }
