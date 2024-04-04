@@ -26,8 +26,8 @@ namespace Nemo
         public MainWindow()
         {
             InitializeComponent();
-            lesPlongeurs.Add(new Plongeur(1, "Terrieur", "Alain", 2, new NiveauPlonger(1, "ce type de plongeur doit être encadré par un moniteur. Il peut participer à toutes les plongées qui ont lieu dans la zone comprise en 0 et 20m de profondeur.")));
-            lesPlongeurs.Add(new Plongeur(2, "Onyme", "Anne", 2, new NiveauPlonger(2, "ce type de plongeur doit être encadré par un moniteur. Il peut participer à toutes les plongées qui ont lieu dans la zone comprise en 0 et 20m de profondeur.")));
+            lesPlongeurs.Add(new Plongeur(1, "Terrieur", "Alain", 2));
+            lesPlongeurs.Add(new Plongeur(2, "Onyme", "Anne", 2));
 
             lesPersonnels.Add(new Personnel(1, "Onyme", "Anne", "moniteur", "02/06/2024", "test"));
             lesPersonnels.Add(new Personnel(2, "Martin", "Sophie", "Assistante", "02/06/2024", "test"));
