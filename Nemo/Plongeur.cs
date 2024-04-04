@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,47 +8,45 @@ namespace Nemo
 {
     public class Plongeur
     {
-        private int _numPlongeur;
-        private string _nomPlongeur;
-        private string _prenomPlongeur;
-        private NiveauPlonger _leNiveauPlongeur;
+        private int id;
+        private string nom;
+        private string prenom;
+        private int niveau;
 
-        public Plongeur(int numPlongeur, string nomPlongeur, string prenomPlongeur, NiveauPlonger leNiveauPlongeur)
+        public int Niveau
         {
-            _numPlongeur = numPlongeur;
-            _nomPlongeur = nomPlongeur;
-            _prenomPlongeur = prenomPlongeur;
-            _leNiveauPlongeur = leNiveauPlongeur;
-        }
-
-        public int NumPlongeur
-        {
-            get { return _numPlongeur; }
-            set { _numPlongeur = value; }
-        }
-
-        public string NomPlongeur
-        {
-            get { return _nomPlongeur; }
-            set { _nomPlongeur = value; }
-        }
-
-        public string PrenomPlongeur
-        {
-            get { return _prenomPlongeur; }
-            set { _prenomPlongeur = value; }
-        }
-
-        public NiveauPlonger LeNiveauPlongeur
-        {
-            get { return _leNiveauPlongeur; }
-            set { _leNiveauPlongeur = value; }
+            get { return niveau; }
+            set { niveau = value; }
         }
 
 
-        public override string ToString()
+        public string Prenom
         {
-            return NumPlongeur.ToString();
+            get { return prenom; }
+            set { prenom = value; }
+        }
+
+
+        public string Nom
+        {
+            get { return nom; }
+            set { nom = value; }
+        }
+
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+
+        public Plongeur(int id, string nm, string pn, int lv)
+        {
+            this.id = id;
+            this.nom = nm;
+            this.prenom = pn;
+            this.niveau = lv;
         }
     }
 }
