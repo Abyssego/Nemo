@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,17 +20,17 @@ namespace Nemo
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Plongeur> lesPlongeurs = new List<Plongeur>(); 
+        List<Plongeur> lesPlongeurs = new List<Plongeur>();
         List<Personnel> lesPersonnels = new List<Personnel>();
 
         public MainWindow()
         {
             InitializeComponent();
-            lesPlongeurs.Add(new Plongeur(1, "Terrieur", "Alain", new NiveauPlonger(1, "ce type de plongeur doit être encadré par un moniteur. Il peut participer à toutes les plongées qui ont lieu dans la zone comprise en 0 et 20m de profondeur.", "moniteur", "15m")));
-            lesPlongeurs.Add(new Plongeur(2, "Onyme", "Anne", new NiveauPlonger(3, "ce type de plongeur peut plonger avec un plongeur de niveau 2 ou plus dans la zone comprise entre 0 et 20m et avec un plongeur de niveau 3 ou 4 dans la zone comprise entre 20 et 40m.", "niveau 2 ou plus", "25m")));
+            lesPlongeurs.Add(new Plongeur(1, "Terrieur", "Alain", 2, new NiveauPlonger(1, "ce type de plongeur doit être encadré par un moniteur. Il peut participer à toutes les plongées qui ont lieu dans la zone comprise en 0 et 20m de profondeur.")));
+            lesPlongeurs.Add(new Plongeur(2, "Onyme", "Anne", 2, new NiveauPlonger(2, "ce type de plongeur doit être encadré par un moniteur. Il peut participer à toutes les plongées qui ont lieu dans la zone comprise en 0 et 20m de profondeur.")));
 
-            /*lesPersonnels.Add(new Personnel(1, "Onyme", "Anne", "moniteur", "02/06/2024", "test"));
-            lesPersonnels.Add(new Personnel(2, "Martin", "Sophie", "Assistante", "02/06/2024", "test"));*/
+            lesPersonnels.Add(new Personnel(1, "Onyme", "Anne", "moniteur", "02/06/2024", "test"));
+            lesPersonnels.Add(new Personnel(2, "Martin", "Sophie", "Assistante", "02/06/2024", "test"));
 
             DtgPlongeur.ItemsSource = lesPlongeurs;
             DtgPersonnel.ItemsSource = lesPersonnels;
@@ -40,12 +40,35 @@ namespace Nemo
         {
             int index = DtgPlongeur.SelectedIndex;
 
-            lesPlongeurs[index].LeNiveauPlongeur.NumNiveauPlonger = Convert.ToInt16(txtNiveau.Text);
-            lesPlongeurs[index].LeNiveauPlongeur.ProfondeurPlonger = txtProfondeur.Text;
-            lesPlongeurs[index].LeNiveauPlongeur.Accompagnant = txtAccompagne.Text;
+            // Vérifier si un élément est sélectionné dans la DataGrid
+            if (index >= 0 && index < lesPlongeurs.Count)
+            {
+                Plongeur plongeurSelectionne = lesPlongeurs[index];
 
-            DtgPlongeur.Items.Refresh();
+                // Accéder à l'instance de NiveauPlonger associée au Plongeur sélectionné
+                NiveauPlonger niveauPlonger = plongeurSelectionne.NiveauPlonger;
+
+                // Modifier les propriétés de l'instance de NiveauPlonger
+                if (niveauPlonger != null)
+                {
+                    niveauPlonger.NumNiveauPlonger = Convert.ToInt16(txtNiveau.Text);
+                    niveauPlonger.DescriptionNiveauPlonger = txtProfondeur.Text;
+
+                    // Rafraîchir l'affichage
+                    DtgPlongeur.Items.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur : NiveauPlonger est null pour ce Plongeur.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un plongeur dans la liste.");
+            }
         }
+
+
 
         private void btnModifPersonnel_Click(object sender, RoutedEventArgs e)
         {
